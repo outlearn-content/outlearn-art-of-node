@@ -1,28 +1,32 @@
-# The Art of Node
-## An introduction to Node.js
+<!--
+name: outlearn-art-of-node
+version : 0.0.1
+title : "The Art of Node"
+description: "Introduction to Node.js."
+homepage : "https://github.com/maxogden"
+author : "Max Ogden"
+license : "Creative Commons ShareAlike",
+"contact" : {
+  "url" : "http://maxogden.com/",
+  "twitter": "@maxogden"
+}
+-->
+
+<!-- @section -->
+# An introduction to Node.js
 
 This document is intended for readers who know at least a little bit of a couple of things:
 
 - a scripting language like JavaScript, Ruby, Python, Perl, etc. If you aren't a programmer yet then it is probably easier to start by reading [JavaScript for Cats](http://jsforcats.com/).
 - git and github. These are the open source collaboration tools that people in the node community use to share modules. You just need to know the basics. Here are three great intro tutorials: [1](http://skli.se/2012/09/22/introduction-to-git/), [2](http://ericsteinborn.com/github-for-cats/#/), [3](http://opensourcerer.diy.org/)
 
-## Table of contents
 
-- [Learn node interactively](#learn-node-interactively)
-- [Understanding node](#understanding-node)
-- [Core modules](#core-modules)
-- [Callbacks](#callbacks)
-- [Events](#events)
-- [Streams](#streams)
-- [Modules and npm](#modules)
-- [Client side development with npm](#client-side-development-with-npm)
-- [Going with the grain](#going-with-the-grain)
-
-## Learn node interactively
+<!-- @section -->
+# Learn node interactively
 
 In addition to reading this guide it's super important to also bust out your favorite text editor and actually write some node code. I always find that when I just read some code in a book it never really clicks, but learning by writing code is a good way to grasp new programming concepts.
 
-### NodeSchool.io
+## NodeSchool.io
 
 [NodeSchool.io](http://nodeschool.io/) is a series of free + open source interactive workshops that teach you the principles of Node.js and beyond.
 
@@ -40,7 +44,8 @@ npm install learnyounode -g
 learnyounode
 ```
 
-## Understanding node
+<!-- @section -->
+# Understanding node
 
 Node.js is an open source project designed to help you write JavaScript programs that talk to networks, file systems or other I/O (input/output, reading/writing) sources. That's it! It is just a simple and stable I/O platform that you are encouraged to build modules on top of.
 
@@ -87,7 +92,8 @@ Here are some fun things made easy with node thanks to its non-blocking nature:
   - Write IRC chat bots
   - Create [walking biped robots](http://www.youtube.com/watch?v=jf-cEB3U2UQ)
 
-## Core modules
+<!-- @section -->
+# Core modules
 
 Firstly I would recommend that you get node installed on your computer. The easiest way is to visit [nodejs.org](http://nodejs.org) and click `Install`.
 
@@ -97,7 +103,8 @@ In addition to `fs` and network modules there are a number of other base modules
 
 Node handles I/O with: callbacks, events, streams and modules. If you learn how these four things work then you will be able to go into any module in node core and have a basic understanding about how to interface with it.
 
-## Callbacks
+<!-- @section -->
+# Callbacks
 
 This is the most important topic to understand if you want to understand how to use node. Nearly everything in node uses callbacks. They weren't invented by node, they are just part of the JavaScript language.
 
@@ -258,7 +265,8 @@ fs.readFile('movie.mp4', function finishedReading(error, movieData) {
 })
 ```
 
-## Events
+<!-- @section -->
+# Events
 
 In node if you require the [events](http://nodejs.org/api/events.html) module you can use the so-called 'event emitter' that node itself uses for all of its APIs that emit things.
 
@@ -341,7 +349,8 @@ function storeMessage(message) {
 }
 ```
 
-## Streams
+<!-- @section -->
+# Streams
 
 Early on in the node project the file system and network APIs had their own separate patterns for dealing with streaming I/O. For example, files in a file system have things called 'file descriptors' so the `fs` module had to have extra logic to keep track of these things whereas the network modules didn't have such a concept. Despite minor differences in semantics like these, at a fundamental level both groups of code were duplicating a lot of functionality when it came to reading data in and out. The team working on node realized that it would be confusing to have to learn two sets of semantics to essentially do the same thing so they made a new API called the `Stream` and made all the network and file system code use it.
 
@@ -349,13 +358,14 @@ The whole point of node is to make it easy to deal with file systems and network
 
 There are already two great resources that you can use to learn about node streams. One is the stream-adventure (see the Learn Node Interactively section) and the other is a reference called the Stream Handbook.
 
-### Stream Handbook
+## Stream Handbook
 
 [stream-handbook](https://github.com/substack/stream-handbook#introduction) is a guide, similar to this one, that contains a reference for everything you could possibly need to know about streams.
 
 [![stream-handbook](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/stream-handbook.png)](https://github.com/substack/stream-handbook)
 
-## Modules
+<!-- @section -->
+# Modules
 
 Node core is made up of about two dozen modules, some lower level ones like `events` and `stream` some higher level ones like `http` and `crypto`.
 
@@ -363,7 +373,7 @@ This design is intentional. Node core is supposed to be small, and the modules i
 
 For everything else there is [npm](https://npmjs.org/). Anyone can create a new node module that adds some functionality and publish it to npm. As of the time of this writing there are 34,000 modules on npm.
 
-### How to find a module
+## How to find a module
 
 Imagine you are trying to convert PDF files into TXT files. The best place to start is by doing `npm search pdf`:
 
@@ -418,7 +428,7 @@ var child = shell.exec('pdftotext ' + self.options.additional.join(' '));
 
 Does this make one any better than the other? Hard to say! It's important to actually *read* the code and make your own conclusions. If you find a module you like, use `npm star modulename` to give npm feedback about modules that you had a positive experience with.
 
-### Modular development workflow
+## Modular development workflow
 
 npm is different from most package managers in that it installs modules into a folder inside of other existing modules. The previous sentence might not make sense right now but it is the key to npm's success.
 
@@ -428,7 +438,7 @@ It's not just Debian that does this. Most programming language package managers 
 
 With npm installing global modules is an anti-pattern. Just like how you shouldn't use global variables in your JavaScript programs you also shouldn't install global modules (unless you need a module with an executable binary to show up in your global `PATH`, but you don't always need to do this -- more on this later).
 
-#### How `require` works
+### How `require` works
 
 When you call `require('some_module')` in node here is what happens:
 
@@ -454,11 +464,11 @@ Here's what happens when we fix the folder naming error by changing `my_modules`
 
 To test out which module actually gets loaded by node, you can use the `require.resolve('some_module')` command, which will show you the path to the module that node finds as a result of the tree climbing process. `require.resolve` can be useful when double-checking that the module that you *think* is getting loaded is *actually* getting loaded -- sometimes there is another version of the same module closer to your current working directory than the one you intend to load.
 
-### How to write a module
+## How to write a module
 
 Now that you know how to find modules and require them you can start writing your own modules.
 
-#### The simplest possible module
+### The simplest possible module
 
 Node modules are radically lightweight. Here is one of the simplest possible node modules:
 
@@ -495,7 +505,7 @@ npm init
 
 Running `npm init` will create a valid `package.json` for you and if you run it in an existing `git` repo it will set the `repositories` field inside `package.json` automatically as well!
 
-#### Adding dependencies
+### Adding dependencies
 
 A module can list any other modules from npm or GitHub in the `dependencies` field of `package.json`. To install the `request` module as a new dependency and automatically add it to `package.json` run this from your module root directory:
 
@@ -517,7 +527,8 @@ This installs a copy of `request` into the closest `node_modules` folder and mak
 
 By default `npm install` will grab the latest published version of a module.
 
-## Client side development with npm
+<!-- @section -->
+# Client side development with npm
 
 A common misconception about npm is that since it has 'Node' in the name that it must only be used for server side JS modules. This is completely untrue! npm actually stands for Node Packaged Modules, e.g. modules that Node packages together for you. The modules themselves can be whatever you want -- they are just a folder of files wrapped up in a .tar.gz, and a file called `package.json` that declares the module version and a list of all modules that are dependencies of the module (as well as their version numbers so the working versions get installed automatically). It's turtles all the way down - module dependencies are just modules, and those modules can have dependencies etc. etc. etc.
 
@@ -554,23 +565,24 @@ Or check out a [more complicated example](http://requirebin.com/?gist=6031068) (
 
 [![requirebin](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/requirebin.png)](http://requirebin.com/embed?gist=6031068)
 
-## Going with the grain
+<!-- @section -->
+# Going with the grain
 
 Like any good tool, node is best suited for a certain set of use cases. For example: Rails, the popular web framework, is great for modeling complex [business logic](http://en.wikipedia.org/wiki/Business_logic), e.g. using code to represent real life business objects like accounts, loan, itineraries, and inventories. While it is technically possible to do the same type of thing using node, there would be definite drawbacks since node is designed for solving I/O problems and it doesn't know much about 'business logic'. Each tool focuses on different problems. Hopefully this guide will help you gain an intuitive understanding of the strengths of node so that you know when it can be useful to you.
 
-### What is outside of node's scope?
+## What is outside of node's scope?
 
 Fundamentally node is just a tool used for managing I/O across file systems and networks, and it leaves other more fancy functionality up to third party modules. Here are some things that are outside the scope of node:
 
-#### Web frameworks
+### Web frameworks
 
 There are a number of web frameworks built on top of node (framework meaning a bundle of solutions that attempts to address some high level problem like modeling business logic), but node is not a web framework. Web frameworks that are written using node don't always make the same kind of decisions about adding complexity, abstractions and tradeoffs that node does and may have other priorities.
 
-#### Language syntax
+### Language syntax
 
 Node uses JavaScript and doesn't change anything about it. Felix Geisendörfer has a pretty good write-up of the 'node style' [here](https://github.com/felixge/node-style-guide).
 
-#### Language abstraction
+### Language abstraction
 
 When possible node will use the simplest possible way of accomplishing something. The 'fancier' you make your JavaScript the more complexity and tradeoffs you introduce. Programming is hard, especially in JS where there are 1000 solutions to every problem! It is for this reason that node tries to always pick the simplest, most universal option. If you are solving a problem that calls for a complex solution and you are unsatisfied with the 'vanilla JS solutions' that node implements, you are free to solve it inside your app or module using whichever abstractions you prefer.
 
@@ -605,19 +617,21 @@ fs.readFile('movie.mp4', function(err, data) {
 })
 ```
 
-#### Threads/fibers/non-event-based concurrency solutions
+### Threads/fibers/non-event-based concurrency solutions
 
 Note: If you don't know what these things mean then you will likely have an easier time learning node, since unlearning things is just as much work as learning things.
 
 Node uses threads internally to make things fast but doesn't expose them to the user. If you are a technical user wondering why node is designed this way then you should 100% read about [the design of libuv](http://nikhilm.github.com/uvbook/), the C++ I/O layer that node is built on top of.
 
+<!-- @section -->
 # Donate
 
 This short book is a work in progress. If you like it then please **give me a dollar** via [gittip](https://www.gittip.com/maxogden/) so that I can justify taking the time to write more!
 
 [![donate](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/donate.png)](https://www.gittip.com/maxogden/)
 
-## License
+<!-- @section -->
+# License
 
 ![CCBY](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/CCBY.png)
 
