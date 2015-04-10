@@ -353,7 +353,7 @@ There are already two great resources that you can use to learn about node strea
 
 [stream-handbook](https://github.com/substack/stream-handbook#introduction) is a guide, similar to this one, that contains a reference for everything you could possibly need to know about streams.
 
-[![stream-handbook](stream-handbook.png)](https://github.com/substack/stream-handbook)
+[![stream-handbook](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/stream-handbook.png)](https://github.com/substack/stream-handbook)
 
 ## Modules
 
@@ -367,7 +367,7 @@ For everything else there is [npm](https://npmjs.org/). Anyone can create a new 
 
 Imagine you are trying to convert PDF files into TXT files. The best place to start is by doing `npm search pdf`:
 
-![pdfsearch](npm-search.png)
+![pdfsearch](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/npm-search.png)
 
 There are a ton of results! npm is quite popular and you will usually be able to find multiple potential solutions. If you go through each module and whittle down the results into a more narrow set (filtering out things like PDF generation modules) you'll end up with these:
 
@@ -392,7 +392,7 @@ Here are some different ways to interpret the modules:
 
 Lets compare the differences between `pdftotextjs` and `pdf-text-extract`, both of which are are wrappers around the `pdftotext` utility.
 
-![pdf-modules](pdf-modules.png)
+![pdf-modules](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/pdf-modules.png)
 
 Both of these:
 
@@ -404,11 +404,11 @@ Both of these:
 
 Just looking at the `package.json` + module statistics it's hard to get a feeling about which one might be the right choice. Let's compare the READMEs:
 
-![pdf-readmes](pdf-readmes.png)
+![pdf-readmes](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/pdf-readmes.png)
 
 Both have simple descriptions, CI badges, installation instructions, clear examples and instructions for running the tests. Great! But which one do we use? Let's compare the code:
 
-![pdf-code](pdf-code.png)
+![pdf-code](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/pdf-code.png)
 
 `pdftotextjs` is around 110 lines of code, and `pdf-text-extract` is around 40, but both essentially boil down to this line:
 
@@ -440,7 +440,7 @@ This cycle repeats until node reaches the root folder of the filesystem, at whic
 
 Here's a visual example:
 
-![mod-diagram-01](mod-diagram-01.png)
+![mod-diagram-01](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/mod-diagram-01.png)
 
 When the current working directory is `subsubfolder` and `require('foo')` is called, node will look for the folder called `subsubsubfolder/node_modules`. In this case it won't find it -- the folder there is mistakenly called `my_modules`. Then node will go up one folder and try again, meaning it then looks for `subfolder_B/node_modules`, which also doesn't exist. Third try is a charm, though, as `folder/node_modules` does exist *and* has a folder called `foo` inside of it. If `foo` wasn't in there node would continue its search up the directory tree.
 
@@ -450,7 +450,7 @@ One of the benefits of npm's approach is that modules can install their dependen
 
 Here's what happens when we fix the folder naming error by changing `my_modules` to the correct name `node_modules`:
 
-![mod-diagram-02](mod-diagram-02.png)
+![mod-diagram-02](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/mod-diagram-02.png)
 
 To test out which module actually gets loaded by node, you can use the `require.resolve('some_module')` command, which will show you the path to the module that node finds as a result of the tree climbing process. `require.resolve` can be useful when double-checking that the module that you *think* is getting loaded is *actually* getting loaded -- sometimes there is another version of the same module closer to your current working directory than the one you intend to load.
 
@@ -481,7 +481,7 @@ Put both of those files in a folder called `number-one` (the `id` in `package.js
 
 Calling the function `require('number-one')` returns the value of whatever `module.exports` is set to inside the module:
 
-![simple-module](simple-module.png)
+![simple-module](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/simple-module.png)
 
 An even quicker way to create a module is to run these commands:
 
@@ -552,7 +552,7 @@ setTimeout(function() {
 
 Or check out a [more complicated example](http://requirebin.com/?gist=6031068) (feel free to change the code and see what happens):
 
-[![requirebin](requirebin.png)](http://requirebin.com/embed?gist=6031068)
+[![requirebin](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/requirebin.png)](http://requirebin.com/embed?gist=6031068)
 
 ## Going with the grain
 
@@ -615,11 +615,11 @@ Node uses threads internally to make things fast but doesn't expose them to the 
 
 This short book is a work in progress. If you like it then please **give me a dollar** via [gittip](https://www.gittip.com/maxogden/) so that I can justify taking the time to write more!
 
-[![donate](donate.png)](https://www.gittip.com/maxogden/)
+[![donate](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/donate.png)](https://www.gittip.com/maxogden/)
 
 ## License
 
-![CCBY](CCBY.png)
+![CCBY](https://raw.githubusercontent.com/outlearn-content/outlearn-art-of-node/master/assets/CCBY.png)
 
 This is a derivative work by [Outlearn](http://www.outlearn.com) based on [Art of Node](https://github.com/maxogden/art-of-node) by [Max Ogden](https://github.com/maxogden).
 
